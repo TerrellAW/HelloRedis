@@ -2,10 +2,10 @@ from flask import Flask
 import redis
 
 app = Flask(__name__)
-r = redis.Redis(host='redis', port=6379, decode_responses=True)
 
 @app.route('/')
 def hello():
+    r = redis.Redis(host='redis', port=6379, decode_responses=True)
     name = r.get('name')
     if name:
         return f"Hello {name}"
